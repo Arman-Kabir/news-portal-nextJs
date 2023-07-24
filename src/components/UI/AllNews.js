@@ -1,5 +1,5 @@
-import { CalendarOutlined } from '@ant-design/icons';
-import { Calendar, Card, Col, Row } from 'antd';
+import { ArrowRightOutlined, CalendarOutlined, CommentOutlined, ProfileOutlined } from '@ant-design/icons';
+import {  Card, Col, Row } from 'antd';
 import Image from 'next/image';
 import React from 'react'
 
@@ -34,15 +34,29 @@ function AllNews({ allNews }) {
                                 <span>
                                     <CalendarOutlined />{news?.release_date}
                                 </span>
+                                <span>
+                                    <CommentOutlined />{news?.comment_count} COMMENTS
+                                </span>
+                                <span>
+                                    <ProfileOutlined />{news?.category}
+                                </span>
+                            </p>
+                            <p style={{ fontSize: "15px" }}>
+                                {
+                                    news?.description.length > 100 ? news?.description.slice(0, 70) + "..."
+                                        : news?.description
+                                }
+                            </p>
+                            <p style={{ fontSize: "15px", marginTop: "20px", backgroundColor: "black", color: "white", width: "100%", padding: "2px 5px", fontWeight: "300", letterSpacing: "3px", textAlign: "center" }}>
+                                Keep Reading <ArrowRightOutlined />
                             </p>
                         </Card>
                     </Col>
                 ))
                 }
             </Row>
-
         </>
     )
-}
+};
 
 export default AllNews;
