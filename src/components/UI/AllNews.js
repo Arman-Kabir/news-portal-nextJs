@@ -1,6 +1,7 @@
 import { ArrowRightOutlined, CalendarOutlined, CommentOutlined, ProfileOutlined } from '@ant-design/icons';
-import {  Card, Col, Row } from 'antd';
+import { Card, Col, Row } from 'antd';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react'
 
 function AllNews({ allNews }) {
@@ -47,9 +48,11 @@ function AllNews({ allNews }) {
                                         : news?.description
                                 }
                             </p>
-                            <p style={{ fontSize: "15px", marginTop: "20px", backgroundColor: "black", color: "white", width: "100%", padding: "2px 5px", fontWeight: "300", letterSpacing: "3px", textAlign: "center" }}>
-                                Keep Reading <ArrowRightOutlined />
-                            </p>
+                            <Link href={`/news/${news?.id}`}>
+                                <p style={{ fontSize: "15px", marginTop: "20px", backgroundColor: "black", color: "white", width: "100%", padding: "2px 5px", fontWeight: "300", letterSpacing: "3px", textAlign: "center" }}>
+                                    Keep Reading <ArrowRightOutlined />
+                                </p>
+                            </Link>
                         </Card>
                     </Col>
                 ))
