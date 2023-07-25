@@ -29,7 +29,22 @@ HomePage.getLayout = function getLayout(page) {
 };
 
 
-export const getStaticProps = async ()=>{
+// export const getStaticProps = async ()=>{
+//   const res = await fetch("http://localhost:5000/news");
+//   const data = await res.json();
+//   console.log(data);
+
+
+//   return {
+//     props:{
+//       allNews:data
+//     },
+//     revalidate:10
+//   };
+// }
+
+
+export const getServerSideProps = async ()=>{
   const res = await fetch("http://localhost:5000/news");
   const data = await res.json();
   console.log(data);
@@ -38,7 +53,6 @@ export const getStaticProps = async ()=>{
   return {
     props:{
       allNews:data
-    },
-    revalidate:10
+    }
   };
 }
