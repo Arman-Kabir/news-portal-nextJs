@@ -4,6 +4,11 @@ import Image from "next/image";
 import { ArrowRightOutlined, CalendarOutlined, CommentOutlined, ProfileOutlined } from '@ant-design/icons';
 
 function NewsDetailPage({ news }) {
+
+    if(!news){
+        return <p>Loading state</p>
+    }
+
     return (
         <div>
             {/* <h1>{news?.title}</h1>
@@ -63,6 +68,7 @@ NewsDetailPage.getLayout = function getLayout(page) {
     return <RootLayout>{page}</RootLayout>;
 };
 
+
 export const getStaticPaths = async () => {
     const res = await fetch("http://localhost:5000/news");
     const newses = await res.json();
@@ -71,8 +77,9 @@ export const getStaticPaths = async () => {
         params: { newsId: news.id },
     }))
 
-    return { paths, fallback: false };
+    return { paths, fallback: "blocking" };
 };
+
 
 export const getStaticProps = async (context) => {
     const { params } = context;
