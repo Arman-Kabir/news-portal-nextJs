@@ -17,7 +17,7 @@ function AllNews({ allNews }) {
             {/* Card */}
 
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-                {allNews.map((news) => (
+                {allNews?.map((news) => (
                     <Col key={news.id} className="" span={6}>
                         <Card hoverable cover={
                             <Image
